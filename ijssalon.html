@@ -1,94 +1,471 @@
 
-
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bol & Blij | Ambachtelijk IJssalon</title>
 <style>
+:root {
+  --roze: #c34b75;
+  --donker: #422b35;
+  --licht: #fff8f5;
+  --zacht: #fbe9ee;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
 body {
-  background-color: #fff0f5;
+  margin: 0;
   font-family: Arial, sans-serif;
-  text-align: center;
-  color: #56343e;
+  color: var(--donker);
+  background: var(--licht);
 }
-
-h1 {
-  background-color: #f5a9bd;
-  padding: 35px;
-  border-radius: 15px;
-}
-
-h2 {
-  color: #c04b78;
-}
-
-p {
-  font-size: 18px;
-}
-
-h3 {
-  background-color: white;
-  padding: 15px;
-  border-radius: 12px;
-  max-width: 450px;
-  margin: 25px auto 10px;
-  color: #b83f69;
-  box-shadow: 0 3px 10px #00000010;
-}
-
-</style>
-<h1>🍦 Welkom bij Bol & Blij!</h1>
-
-<nav>
-  <a href="#smaken">Onze smaken</a>
-  <a href="#menu">Menukaart</a>
-  <a href="#contact">Contact</a>
-</nav>
-
-<style>
 nav {
-  background-color: white;
-  padding: 20px;
-  border-radius: 12px;
-  margin: 20px auto;
+  background: white;
+  padding: 20px 7%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  box-shadow: 0 3px 15px #0000000d;
 }
-
-nav a {
-  color: #b83f69;
+.logo {
+  font-size: 27px;
+  font-weight: bold;
+  color: var(--roze);
+  text-decoration: none;
+}
+.links {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+.links a {
+  text-decoration: none;
+  color: var(--donker);
+  font-weight: bold;
+}
+.links a:hover { color: var(--roze); }
+.hero {
+  min-height: 510px;
+  display: flex;
+  align-items: center;
+  padding: 75px 8%;
+  background:
+    linear-gradient(90deg,
+      rgba(255,245,247,.97) 0%,
+      rgba(255,245,247,.9) 45%,
+      rgba(255,245,247,.12) 100%),
+    url("https://images.unsplash.com/photo-1555529211-3237f6e13d33?auto=format&fit=crop&w=1600&q=85");
+  background-position: center;
+  background-size: cover;
+}
+.hero-content { max-width: 610px; }
+.eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  color: var(--roze);
+  font-weight: bold;
+  font-size: 13px;
+}
+.hero h1 {
+  font-family: Georgia, serif;
+  font-size: clamp(45px,6vw,78px);
+  line-height: 1.12;
+  margin: 15px 0 20px;
+}
+.hero p {
+  font-size: 19px;
+  line-height: 1.7;
+}
+.knop {
+  display: inline-block;
+  background: var(--roze);
+  color: white;
+  padding: 15px 28px;
+  margin-top: 18px;
+  border-radius: 30px;
   text-decoration: none;
   font-weight: bold;
-  margin: 15px;
 }
-
-nav a:hover {
-  text-decoration: underline;
+.knop:hover { background: #983456; }
+section {
+  padding: 75px 7%;
+  text-align: center;
+}
+h2 {
+  font-family: Georgia, serif;
+  font-size: clamp(32px,4vw,45px);
+  margin: 12px 0;
+}
+.onderschrift {
+  color: #806b73;
+  font-size: 17px;
+  margin-bottom: 35px;
+  line-height: 1.7;
+}
+.fotos {
+  display: grid;
+  grid-template-columns: repeat(4,minmax(0,1fr));
+  gap: 22px;
+  max-width: 1250px;
+  margin: auto;
+}
+.fotokaart {
+  background: white;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 8px 25px #00000012;
+  text-align: left;
+  transition: transform .2s;
+}
+.fotokaart:hover { transform: translateY(-5px); }
+.fotokaart img {
+  display: block;
+  width: 100%;
+  height: 245px;
+  object-fit: cover;
+  background: #f3e6e6;
+}
+.fotokaart .inhoud { padding: 20px; }
+.fotokaart h3 { margin: 0 0 10px; }
+.fotokaart p { line-height: 1.6; }
+.prijs { color: var(--roze); font-weight: bold; }
+.menu { background: var(--zacht); }
+.filters {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 30px;
+}
+.filters button {
+  border: 1px solid #e8b8c9;
+  background: white;
+  color: var(--donker);
+  border-radius: 25px;
+  padding: 12px 19px;
+  font: inherit;
+  cursor: pointer;
+}
+.filters button.actief,
+.filters button:hover {
+  background: var(--roze);
+  color: white;
+}
+.smakengrid {
+  display: grid;
+  grid-template-columns: repeat(4,minmax(0,1fr));
+  gap: 16px;
+  max-width: 1250px;
+  margin: auto;
+}
+.smaak {
+  background: white;
+  text-align: left;
+  padding: 24px;
+  border-radius: 16px;
+  border: 1px solid #f3dfe5;
+  box-shadow: 0 5px 15px #00000008;
+}
+.smaak .categorie {
+  color: var(--roze);
+  text-transform: uppercase;
+  font-size: 11px;
+  letter-spacing: 1px;
+  font-weight: bold;
+}
+.smaak h3 { margin: 13px 0; font-size: 21px; }
+.smaak p {
+  font-size: 14px;
+  line-height: 1.6;
+  color: #7c6970;
+  min-height: 65px;
+}
+.smaak .prijs { font-size: 19px; }
+.smaak[hidden] { display: none; }
+.menugrid {
+  display: grid;
+  grid-template-columns: repeat(3,minmax(0,1fr));
+  gap: 22px;
+  max-width: 1100px;
+  margin: auto;
+}
+.menubox {
+  background: white;
+  border-radius: 18px;
+  padding: 28px;
+  text-align: left;
+}
+.menubox h3 {
+  font-size: 23px;
+  color: var(--roze);
+}
+.item {
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+  border-bottom: 1px solid #eee;
+  padding: 15px 0;
+}
+.verhaal {
+  max-width: 750px;
+  margin: auto;
+  line-height: 1.9;
+  font-size: 18px;
+}
+.contact { background: #f5c5d4; }
+.contact p { font-size: 18px; line-height: 1.9; }
+footer {
+  background: var(--donker);
+  color: white;
+  text-align: center;
+  padding: 24px;
+}
+@media(max-width:900px) {
+  .fotos,.smakengrid { grid-template-columns: repeat(2,1fr); }
+  .menugrid { grid-template-columns: 1fr; }
+}
+@media(max-width:550px) {
+  nav { justify-content: center; }
+  .links { justify-content: center; gap: 12px; }
+  .hero {
+    min-height: 420px;
+    background:
+      linear-gradient(rgba(255,245,247,.85),
+        rgba(255,245,247,.85)),
+      url("https://images.unsplash.com/photo-1555529211-3237f6e13d33?auto=format&fit=crop&w=900&q=80");
+    background-size: cover;
+    background-position: center;
+  }
+  section { padding: 55px 5%; }
+  .fotos,.smakengrid { grid-template-columns: 1fr; }
+  .smaak p { min-height: 0; }
 }
 </style>
+</head>
+<body>
 
-<p>Het lekkerste ambachtelijke ijs van Antwerpen.</p>
+<nav>
+  <a class="logo" href="#home">Bol & Blij.</a>
+  <div class="links">
+    <a href="#home">Home</a>
+    <a href="#smaken">Smaken</a>
+    <a href="#menu">Menukaart</a>
+    <a href="#over">Over ons</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
 
-<h2 id="smaken">Onze smaken</h2>
-<p>🍓 Aardbei - €3,50</p>
-<p>🍫 Chocolade - €3,50</p>
-<p>🍦 Vanille - €3,50</p>
-<p>💚 Pistache - €4,00</p>
+<header class="hero" id="home">
+  <div class="hero-content">
+    <div class="eyebrow">Ambachtelijk geïnspireerd ijs</div>
+    <h1>A little scoop of happiness.</h1>
+    <p>
+      Van klassieke vanille tot kleurrijke Tongtwister.
+      Ontdek 16 heerlijke smaken bij Bol & Blij,
+      jouw nieuwe favoriete ijssalonconcept in Antwerpen.
+    </p>
+    <a class="knop" href="#smaken">Ontdek onze smaken</a>
+  </div>
+</header>
 
-<h2 id="menu">🍨 Onze menukaart</h2>
+<section id="smaken">
+  <div class="eyebrow">Vers & verrassend</div>
+  <h2>Een wereld vol ijsplezier</h2>
+  <p class="onderschrift">
+    Een selectie sfeerfoto's van heerlijk ijs.
+    Ontdek ons volledige assortiment hieronder.
+  </p>
 
-<h3>IJshoorntjes</h3>
-<p>1 bolletje - €2,50</p>
-<p>2 bolletjes - €4,50</p>
-<p>3 bolletjes - €6,00</p>
+  <div class="fotos">
+    <article class="fotokaart">
+      <img
+       src="https://images.unsplash.com/photo-1555529211-3237f6e13d33?auto=format&fit=crop&w=750&q=80"
+       alt="Aardbeienijs in een hoorntje">
+      <div class="inhoud">
+        <h3>Aardbei</h3>
+        <p>Een fruitige klassieker.</p>
+        <span class="prijs">€3,50</span>
+      </div>
+    </article>
 
-<h3>Specialiteiten</h3>
-<p>🍓 Aardbeicoupe - €7,50</p>
-<p>🍫 Chocoladecoupe - €7,50</p>
-<p>🍌 Banana split - €8,50</p>
+    <article class="fotokaart">
+      <img
+       src="https://images.unsplash.com/photo-1597249536924-b226b1a1259d?auto=format&fit=crop&w=750&q=80"
+       alt="Romig vanille-ijs met fruitige swirl">
+      <div class="inhoud">
+        <h3>Vanille</h3>
+        <p>Zacht, romig en tijdloos.</p>
+        <span class="prijs">€3,50</span>
+      </div>
+    </article>
 
-<h3>Drankjes</h3>
-<p>🥤 Milkshake - €5,00</p>
-<p>☕ IJskoffie - €4,50</p>
-<p>💧 Water - €2,00</p>
+    <article class="fotokaart">
+      <img
+       src="https://images.unsplash.com/photo-1762857362159-840f0b18dc8e?auto=format&fit=crop&w=750&q=80"
+       alt="Twee bolletjes gelato in een kleurrijk bekertje">
+      <div class="inhoud">
+        <h3>Gelato deluxe</h3>
+        <p>Een heerlijk verwenmoment.</p>
+        <span class="prijs">Vanaf €3,50</span>
+      </div>
+    </article>
 
-<h2 id="contact">📍 Contact</h2>
+    <article class="fotokaart">
+      <img
+       src="https://images.unsplash.com/photo-1614802104805-c884cf10f6f9?auto=format&fit=crop&w=750&q=80"
+       alt="IJshoorntje met gelato">
+      <div class="inhoud">
+        <h3>Onze hoorntjes</h3>
+        <p>Een klassieker om van te genieten.</p>
+        <span class="prijs">Vanaf €2,50</span>
+      </div>
+    </article>
+  </div>
+</section>
 
-<p>🍦 Bol & Blij - Antwerpen</p>
-<p>📧 E-mail: binnenkort beschikbaar</p>
-<p>📸 Instagram: @bolenblij</p>
-<p>💗 Volg ons voor nieuwe smaken en acties!</p>
+<section class="menu" id="menu">
+  <div class="eyebrow">Ontdek ons assortiment</div>
+  <h2>Onze 16 smaken</h2>
+  <p class="onderschrift">
+    Klassiek, fruitig of verrassend? Kies jouw favoriet.
+  </p>
+
+  <div class="filters">
+    <button class="actief" onclick="filterSmaken('alles',this)">Alle smaken</button>
+    <button onclick="filterSmaken('klassiek',this)">Klassiekers</button>
+    <button onclick="filterSmaken('fruit',this)">Fruitig</button>
+    <button onclick="filterSmaken('special',this)">Specialiteiten</button>
+  </div>
+
+  <div class="smakengrid" id="smakengrid"></div>
+</section>
+
+<section>
+  <div class="eyebrow">Iets extra lekkers</div>
+  <h2>Meer dan alleen ijs</h2>
+  <p class="onderschrift">
+    Voor iedereen die graag iets extra's wil.
+  </p>
+
+  <div class="menugrid">
+    <div class="menubox">
+      <h3>IJshoorntjes</h3>
+      <div class="item"><span>1 bolletje</span><b>€2,50</b></div>
+      <div class="item"><span>2 bolletjes</span><b>€4,50</b></div>
+      <div class="item"><span>3 bolletjes</span><b>€6,00</b></div>
+    </div>
+
+    <div class="menubox">
+      <h3>Specialiteiten</h3>
+      <div class="item"><span>Aardbeicoupe</span><b>€7,50</b></div>
+      <div class="item"><span>Chocoladecoupe</span><b>€7,50</b></div>
+      <div class="item"><span>Banana split</span><b>€8,50</b></div>
+    </div>
+
+    <div class="menubox">
+      <h3>Drankjes</h3>
+      <div class="item"><span>Milkshake</span><b>€5,00</b></div>
+      <div class="item"><span>IJskoffie</span><b>€4,50</b></div>
+      <div class="item"><span>Water</span><b>€2,00</b></div>
+    </div>
+  </div>
+</section>
+
+<section id="over">
+  <div class="eyebrow">Ons verhaal</div>
+  <h2>Made with love. Served with joy.</h2>
+  <div class="verhaal">
+    <p>
+      Bij Bol & Blij geloven we dat een ijsje veel meer
+      is dan een dessert. Het is een klein geluksmoment
+      dat je met anderen kunt delen.
+    </p>
+    <p>
+      Ons concept combineert vertrouwde smaken met
+      verrassende combinaties zoals Tongtwister,
+      mango en aardbei-banaan. Een plek waar kwaliteit,
+      gezelligheid en creativiteit samenkomen.
+    </p>
+  </div>
+</section>
+
+<section id="contact" class="contact">
+  <h2>Kom gezellig langs</h2>
+  <p>Bol & Blij – een fictief ijssalonconcept in Antwerpen</p>
+  <p>Contact en openingsuren: binnenkort beschikbaar</p>
+  <p>Volg ons concept voor nieuwe smaken en acties!</p>
+</section>
+
+<footer>
+  © 2026 Bol & Blij | Schoolproject
+  <p style="font-size:12px">
+    Sfeerfoto's: Unsplash. Producten en prijzen zijn fictief.
+  </p>
+</footer>
+
+<script>
+const smaken = [
+  ["Vanille","klassiek","Romig en zacht","3,50"],
+  ["Chocolade","klassiek","Intens en chocoladeachtig","3,50"],
+  ["Aardbei","klassiek","Fruitig en fris","3,50"],
+  ["Pistache","klassiek","Nootachtig en verfijnd","4,00"],
+  ["Mango","fruit","Tropisch en zonnig","3,50"],
+  ["Aardbei-banaan","fruit","Zoet en heerlijk romig","3,50"],
+  ["Framboos","fruit","Fris en lichtzuur","3,50"],
+  ["Citroen","fruit","Verfrissend en zomers","3,50"],
+  ["Tongtwister","special","Een kleurrijke, fruitige mix","4,00"],
+  ["Cookies & Cream","special","Romig met koekjesstukjes","4,00"],
+  ["Salted Caramel","special","Zoet met een snufje zout","4,00"],
+  ["Stracciatella","special","Vanille met chocoladestukjes","4,00"],
+  ["Hazelnoot","special","Vol en nootachtig","4,00"],
+  ["Kokos","special","Zacht en tropisch","4,00"],
+  ["Oreo","special","Roomijs met chocoladekoekjes","4,00"],
+  ["Kinder Bueno","special","Chocolade en hazelnoot","4,50"]
+];
+
+const grid = document.getElementById("smakengrid");
+
+smaken.forEach(s => {
+  const kaart = document.createElement("article");
+  kaart.className = "smaak";
+  kaart.dataset.categorie = s[1];
+
+  const categorie = document.createElement("div");
+  categorie.className = "categorie";
+  categorie.textContent =
+    s[1] === "klassiek" ? "Klassieker" :
+    s[1] === "fruit" ? "Fruitig" : "Specialiteit";
+
+  const titel = document.createElement("h3");
+  titel.textContent = s[0];
+
+  const beschrijving = document.createElement("p");
+  beschrijving.textContent = s[2];
+
+  const prijs = document.createElement("div");
+  prijs.className = "prijs";
+  prijs.textContent = "€" + s[3];
+
+  kaart.append(categorie,titel,beschrijving,prijs);
+  grid.appendChild(kaart);
+});
+
+function filterSmaken(categorie,knop) {
+  document.querySelectorAll(".filters button")
+    .forEach(b => b.classList.remove("actief"));
+  knop.classList.add("actief");
+
+  document.querySelectorAll(".smaak").forEach(kaart => {
+    kaart.hidden = categorie !== "alles" &&
+      kaart.dataset.categorie !== categorie;
+  });
+}
+</script>
+</body>
+</html>
